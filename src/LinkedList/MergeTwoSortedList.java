@@ -23,7 +23,7 @@ public class MergeTwoSortedList {
         return dummyHead.next;
     }
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         int[] arr1 = new int[] {1,2,4};
         ListNode list1 = ListUtil.constructLinkedList(arr1);
         int[] arr2 = new int[] {1,3,4};
