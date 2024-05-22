@@ -1,44 +1,53 @@
 package Comparator;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
+
+/*
+Problem: K Closest point to origin
+*/
+
+
+/*
+    SOLUTION:
+        TLDR:  Use Object POINT ---> constructor(x,y)--> calculates distance
+                    @Override- compareTo -->
+                    since closers we need a reverse comparator ---> so use the opject passed 1st
+*/
+
 
 public class KNNTwoDimensional {
 
-    static class Point implements Comparator<Point> {
+    static class Point implements Comparable<Point>{
         int x;
         int y;
-        Double distanceFromOrigin;
-
-        public Point(){}
+        double distanceFromOrigin;
         public Point(int x, int y){
             this.x = x;
             this.y = y;
             this.distanceFromOrigin = getDistance(x,y);
         }
-        public static Double getDistance(int x, int y){
-            return Math.sqrt(Math.pow((x-0),2)+Math.pow((y-0),2));
+        public double getDistance(int x, int y){
+            return Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
 
         }
-
         @Override
-        public int compare(Point p1, Point p2) {
-            return p2.distanceFromOrigin.compareTo(p1.distanceFromOrigin);
+        public int compareTo(Point point){
+            return Double.compare(point.distanceFromOrigin,this.distanceFromOrigin);
         }
+
     }
 
     public static int[][] kClosest(int[][] points, int k) {
-        Comparator<Point> comp = new Point();
-        PriorityQueue<Point> pq = new PriorityQueue<>(comp);
-        for(int[] coordinates : points){
-            Point point = new Point(coordinates[0], coordinates[1]);
-            pq.add(point);
+        PriorityQueue<Point> pq = new PriorityQueue<>();
+        for(int i=0; i<points.length;i++){
+            Point p = new Point(points[i][0], points[i][1]);
+            pq.add(p);
             if(pq.size()>k){
                 pq.poll();
             }
         }
         int i =0;
-        int[][] result = new int[k][k];
+        int[][] result = new int[k][2];
         while(!pq.isEmpty()){
             Point p = pq.poll();
             result[i] = new int[]{p.x, p.y};
@@ -47,6 +56,13 @@ public class KNNTwoDimensional {
         return result;
     }
 
+
+
+
+
+
+
+
     public static void main (String[] args){
         int[][] input = {{3,3},{5,-1},{-2,-4}};
         int k = 2;
@@ -54,8 +70,5 @@ public class KNNTwoDimensional {
         for(int[] num: result){
             System.out.println(num[0] +", "+ num[1]);
         }
-
     }
-
-
 }

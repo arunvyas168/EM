@@ -22,6 +22,16 @@ Output: [3]
 Explanation: Only building 3 has an ocean view.
 */
 
+/*
+    SOLUTION:
+        1. START FROM END -- reverse side
+        2. kep track of maxHeight (start with maxHeight =0)
+        3. Every time you see a taller building set  maxHeight AND add to list
+
+
+*/
+
+
 import java.util.ArrayList;
 
 public class BuildingWithOceanView {

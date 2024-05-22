@@ -5,23 +5,26 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 public class ReorganizeString {
-    /*
-    Leetcode 767 Reorganize String
+ /*
+    Leetcode 767 Reorganize String:
     Given a string s, rearrange the characters of s so that any two adjacent characters are not the same.
-    Return any possible rearrangement of s or return "" if not possible.
-
     Example 1:
-    Input: s = "aab"
-    Output: "aba"
+        Input: s = "aab"
+        Output: "aba"
     Example 2:
+        Input: s = "aaab"
+        Output: ""
+ */
 
-    Input: s = "aaab"
-    Output: ""
+/*
+    SOLUTION:
+        1. Store in HashMap {character:count}
+        2. Reverse-Sort using priorityQueue
+        3. Pass the Function
+        4. NOTE: IMPORTANT --- have a previous element-- That will not go into que until next Iteration
+                This is how we make sure a node thats used in not again used
 
-    Constraints:
-    1 <= s.length <= 500
-    s consists of lowercase English letters.
-     */
+*/
 
     public  static String getReorganizedString(PriorityQueue<Map.Entry<Character, Integer>> pq, String originalString){
         StringBuilder result = new StringBuilder();

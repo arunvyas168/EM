@@ -1,13 +1,20 @@
 package Palindrome;
 
-public class ValidKPalindrome {
-    public static boolean isValidKPalindrome(String s, int k) {
-        int start = 0;
-        int end = s.length()-1;
-        return isValidKPalindromeUtil(s, start, end, k);
-    }
+
+/*
+    SOLUTION:
+        TLDR: We know every time there is no match we have to see if rest of the substring match
+                We just have to do that recursively
+                and keep tack of K
+        1. Use an util function, isValidKPalindromeUtil(s, start, end, k)
+        2. if no match k-- and then do an or with either remove left vs remove right
+
+
+*/
+public class PalindromeDeleteK {
+
     public static boolean isValidKPalindromeUtil(String s, int start, int end, int k){
-        if((end<start)||(end-start+1>s.length())||(k<0)){
+        if((end<start)||(k<0)){
             return false;
         }
         while(end>start){
@@ -20,6 +27,17 @@ public class ValidKPalindrome {
         }
         return true;
     }
+
+
+
+    public static boolean isValidKPalindrome(String s, int k) {
+        int start = 0;
+        int end = s.length()-1;
+        return isValidKPalindromeUtil(s, start, end, k);
+    }
+
+
+
 
     public static void main(String[] args){
         //Test-1

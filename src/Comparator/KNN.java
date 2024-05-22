@@ -5,28 +5,23 @@ import java.util.PriorityQueue;
 
 public class KNN {
 
-    static class CustomComparator implements Comparator<Integer> {
-        private int k;
-        public CustomComparator(int k) {
-            this.k = k;
-        }
-        @Override
-        public int compare(Integer o1, Integer o2) {
-            if(Math.abs(o1-this.k) < Math.abs(o2-this.k)){
-                return o1;
-            }else{
-                return o2;
-            }
-        }
-    }
-    public static int[]KClosest(int[] points, int k){
-        PriorityQueue<Integer> pq = new PriorityQueue<>(new CustomComparator(k));
+//    static class CustomComparator implements Comparator<Integer> {
+//        private int pivot;
+//        public CustomComparator(int pivot) {
+//            this.pivot = pivot;
+//        }
+//        @Override
+//        public int compare(Integer o1, Integer o2) {
+//            return Integer.compare(Math.abs(o2-this.pivot), Math.abs(o1-this.pivot));
+//        }
+//    }
+    public static int[]KClosest(int[] points, int pivot, int k){
+        //PriorityQueue<Integer> pq = new PriorityQueue<>(new CustomComparator(pivot));
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->Math.abs(b-pivot)-Math.abs(a-pivot));
         for(int num : points){
-            if(pq.size()<k){
-                pq.add(num);
-            }else if((!pq.isEmpty())&&(Math.abs(num-k) < Math.abs(pq.peek()-k))){
+            pq.add(num);
+            if(pq.size()>k){
                 pq.poll();
-                pq.add(num);
             }
         }
         int[] result = new int[pq.size()];
@@ -40,7 +35,7 @@ public class KNN {
 
     public static void main (String[] args){
         int[] input = {0,1,2,3,4,5,6,7,8,9,10};
-        int[] output = KClosest(input, 4);
+        int[] output = KClosest(input, 4, 3);
         for (int num : output){
             System.out.println(num);
         }

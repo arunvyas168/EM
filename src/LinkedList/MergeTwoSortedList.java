@@ -19,9 +19,9 @@ Output: [0]
 */
 public class MergeTwoSortedList {
 
-    public static ListNode mergeTwoLists(ListNode list1, ListNode list2){
-        ListNode dummyHead = new ListNode(-1);
-        ListNode current = dummyHead;
+    public static Node mergeTwoLists(Node list1, Node list2){
+        Node dummyHead = new Node(-1);
+        Node current = dummyHead;
         while((list1!=null)&&(list2!=null)){
             if(list1.value<list2.value){
                 current.next = list1;
@@ -42,10 +42,10 @@ public class MergeTwoSortedList {
 
     public static void main(String[] args){
         int[] arr1 = new int[] {1,2,4};
-        ListNode list1 = ListUtil.constructLinkedList(arr1);
+        Node list1 = ListUtil.constructLinkedList(arr1);
         int[] arr2 = new int[] {1,3,4};
-        ListNode list2 = ListUtil.constructLinkedList(arr2);
-        ListNode result = mergeTwoLists(list1, list2);
+        Node list2 = ListUtil.constructLinkedList(arr2);
+        Node result = mergeTwoLists(list1, list2);
         ListUtil.printList(result);
     }
 }

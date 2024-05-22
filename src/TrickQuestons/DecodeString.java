@@ -23,6 +23,29 @@ Input: s = "2[abc]3[cd]ef"
 Output: "abcabccdcdcdef"
 */
 
+/*
+    Solution:
+
+    TLDR: use stack and then once you expand braces push it back to stack in order to expand later
+
+        1. Use a stack
+        2. use for loop to push char to stack
+        3. Push and push til you see ']'
+        4. If you see a ']' call buildProductStack function
+                buildProductStack:
+                    1. create new sb
+                    2. while stack not empty
+                    3. pop the top
+                    4. if top not '[' insert in 0th place sb
+                    5. This Sb will be the string we need to multiply
+                    6. get the number ---> using the num*10+digit
+                    7. keep appneding sb to new SB
+                    8. push character to stack ----->> very imp
+
+        5. Pop the stack and insert in 0th place to REVERSE and return string
+
+*/
+
 import java.util.Stack;
 
 public class DecodeString {

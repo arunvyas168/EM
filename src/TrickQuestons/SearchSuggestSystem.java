@@ -34,6 +34,23 @@ products[i] consists of lowercase English letters.
 searchWord consists of lowercase English letters.
 */
 
+/* Solution Logic
+
+        Now first we have to sort the product list
+
+        we can have left = 0
+        and right in the end (len-1)
+
+        If Sorted we know Start and End for a given sub string of search word
+        use for loop ---> searchWord.substring(0,i)
+
+        return 3;
+
+
+
+*/
+
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

@@ -1,30 +1,20 @@
 package Palindrome;
 /*
 Given a string s, return true if the s can be palindrome after deleting at most one character from it.
-
-
-
-Example 1:
-
-Input: s = "aba"
-Output: true
-Example 2:
-
-Input: s = "abca"
-Output: true
-Explanation: You could delete the character 'c'.
-Example 3:
-
-Input: s = "abc"
-Output: false
-
-
-Constraints:
-
-1 <= s.length <= 105
-s consists of lowercase English letters.
 */
-public class ValidPalindromeTwo {
+
+/*
+    SOLUTION:
+       1. Use two pointer start and end;
+       2. As they converge check for match
+       3. If they don't match just see if substring match without
+       start+1 or end-1
+
+   Note: can be done recursively -- see DeleteK
+*/
+
+
+public class PalindromeDeleteOne {
     public static boolean isSubStringPalindrome(String s, int start, int end){
         if(end-start+1>s.length()){
             return false;

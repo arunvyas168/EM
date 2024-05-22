@@ -2,23 +2,23 @@ package Comparator;
 
 /*
 Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required.
-
-
-
 Example 1:
-
-Input: intervals = [[0,30],[5,10],[15,20]]
-Output: 2
+    Input: intervals = [[0,30],[5,10],[15,20]]
+    Output: 2
 Example 2:
+    Input: intervals = [[7,10],[2,4]]
+    Output: 1
+*/
 
-Input: intervals = [[7,10],[2,4]]
-Output: 1
 
+/*
+    SOLUTION:
+        1. New Sorted Array with start time -->>> Arrays.sort()
+        2. New Sorted Array with end time -->>> Arrays.sort()
+        3. if start time smaller --> increase room
+        4. if end time smaller or equql --> decrease room
+        5. keep track of maxRoom and return
 
-Constraints:
-
-1 <= intervals.length <= 104
-0 <= starti < endi <= 106
 */
 
 import java.util.Arrays;
@@ -39,7 +39,7 @@ public class MeetingRoomTwo {
         int startIndex = 0;
         int endIndex = 0;
         int rooms = 0;
-        int minRooms=0;
+        int maxRooms=0;
         while((startIndex<start.length)&&(endIndex<end.length)){
             if(start[startIndex]<end[endIndex]){
                 rooms++;
@@ -48,9 +48,9 @@ public class MeetingRoomTwo {
                 rooms--;
                 endIndex++;
             }
-            minRooms = Math.max(minRooms, rooms);
+            maxRooms = Math.max(maxRooms, rooms);
         }
-        return minRooms;
+        return maxRooms;
     }
 
     public static void main (String[] args){
