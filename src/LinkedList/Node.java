@@ -7,4 +7,8 @@ public class Node {
         this.value = value;
         this.next = null;
     }
+    public Node(int value, Node next) {
+        this.value = value;
+        this.next = next;
+    }
 }
