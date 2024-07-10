@@ -1,9 +1,6 @@
 package Tree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class VirticalOrderTraversal {
 
@@ -25,7 +22,7 @@ public class VirticalOrderTraversal {
 
 
     /*
-        DFS solution with Treemap for sorting
+        Solution-1 DFS solution with Treemap for sorting (only sort column)
     */
     public List<List<Integer>> verticalOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
@@ -54,4 +51,66 @@ public class VirticalOrderTraversal {
         verticalOrderUtil(root.left, map, column-1);
         verticalOrderUtil(root.right, map, column+1);
     }
+
+
+
+
+    /*
+        Solution-2 DFS solution with Treemap for sorting (sort column and column)
+    */
+
+    public static class Pair implements Comparable<Pair>{
+        int value;
+        int row;
+        public Pair(int value, int row){
+            this.value = value;
+            this. row = row;
+        }
+
+        @Override
+        public int compareTo(Pair pair){
+            return Integer.compare(this.row, pair.row);
+        }
+
+    }
+
+    public ArrayList<Integer> getColumnSortedList(ArrayList<Pair> value){
+        ArrayList<Integer> list = new ArrayList<>();
+        Collections.sort(value);
+        for(Pair item: value){
+            list.add(item.value);
+        }
+        return list;
+    }
+
+    public List<List<Integer>> verticalOrder2(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        TreeMap<Integer, ArrayList<Pair>> map = new TreeMap<>();
+        int column = 0;
+        int row = 0;
+        verticalOrder2_util(root, row, column, map);
+        for(Map.Entry<Integer, ArrayList<Pair>> entry: map.entrySet()){
+            ArrayList<Integer> list = getColumnSortedList(entry.getValue());
+            result.add(list);
+        }
+        return result;
+    }
+
+    public void verticalOrder2_util(TreeNode root, int column, int row, TreeMap<Integer, ArrayList<Pair>> map){
+        if(root == null){
+            return;
+        }
+        ArrayList<Pair> list = null;
+        if(map.containsKey(column)){
+            list = map.get(column);
+        }else{
+            list = new ArrayList<>();
+
+        }
+        list.add(new Pair(row, root.value));
+        map.put(column, list);
+        verticalOrder2_util(root.left, column-1, row+1, map);
+        verticalOrder2_util(root.right, column+1, row+1, map);
+    }
+
 }
