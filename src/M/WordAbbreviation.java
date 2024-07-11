@@ -32,6 +32,7 @@ public class WordAbbreviation {
                 int num = 0;
                 while((abbrIndex<abbr.length())&&(Character.isDigit(abbr.charAt(abbrIndex)))){
                     num = (num*10) + ((int)abbr.charAt(abbrIndex)-'0');
+                    // corner case if something like 01
                     if(num==0){
                         return false;
                     }
