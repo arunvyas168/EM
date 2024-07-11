@@ -15,7 +15,12 @@ Output: ""                          Explanation: An empty string is also valid.
 
 /*
     SOLUTION:
-        TLDR: We use string builder for constructing result
+        TLDR:
+            1. open++ and if close is more skip adding to string builder
+            2. reverese and if there is excess open remove them
+            3. Note: use sb.insert(0,str) when constructing string in reverse
+
+        We use string builder for constructing result
               We use openCount and when we see a ) without openCount --> Skip
         NOTE:  finally-- traverse reverse --> till openCount>0 ---> skip (
         Also NOTE: 2nd traversal since its traversing reversing use sb.insert(0,str)
