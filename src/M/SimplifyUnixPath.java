@@ -34,6 +34,7 @@ public class SimplifyUnixPath {
             return "/";
         }
         StringBuilder sb = new StringBuilder();
+        //NOTE: ---> not to use stack.pop() --> use (String s : stack)
         for(String str: stack){
             sb.append("/");
             sb.append(str);
@@ -42,7 +43,7 @@ public class SimplifyUnixPath {
     }
 
     public static void main(String[] args){
-        String input = "/a/./b/../../c/";
+        String input = "/home/user/Documents/../Pictures";
         System.out.println(simplifyPath(input));
     }
 }
