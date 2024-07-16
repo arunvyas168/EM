@@ -34,5 +34,29 @@ check if there are any intersection
         return null;
     }
 
+
+
+    TLDR:
+        Both node will catch each other's tail
+        and eventually meet at the intersection
+
+    public Node lowestCommonAncestor(Node p, Node q) {
+        Node a = p;
+        Node b = q;
+        while(a!=b){
+            if(a==null){
+                a = q;
+            }else{
+                a = a.parent;
+            }
+            if(b==null){
+                b = p;
+            }else{
+                b = b.parent;
+            }
+        }
+        return a;
+    }
+
  */
 }
