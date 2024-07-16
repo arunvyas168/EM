@@ -19,16 +19,16 @@ package TrickQuestons;
 
 
 public class RandomPickWeight {
-    private int[] cumulativeSumArray;
+    private int[] prefixSumArray;
     private int totalSum;
 
     public RandomPickWeight(int[] w) {
-        this.cumulativeSumArray = new int[w.length];
+        this.prefixSumArray = new int[w.length];
 
         int cumulativeSum = 0;
         for (int i = 0; i < w.length; ++i) {
             cumulativeSum += w[i];
-            this.cumulativeSumArray[i] = cumulativeSum;
+            this.prefixSumArray[i] = cumulativeSum;
         }
         this.totalSum = cumulativeSum;
     }
@@ -37,8 +37,8 @@ public class RandomPickWeight {
         double target = this.totalSum * Math.random();
         int i = 0;
         // run a linear search to find the target zone
-        while(i < this.cumulativeSumArray.length){
-            if (target < this.cumulativeSumArray[i]){
+        while(i < this.prefixSumArray.length){
+            if (target<=this.prefixSumArray[i]){
                 break;
             }
             i++;
