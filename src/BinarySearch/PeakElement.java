@@ -38,7 +38,7 @@ public class PeakElement {
                 return mid;
             }
         }
-        return start;
+        return -1;
     }
 
     //O(n) solution linear scan

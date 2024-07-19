@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class ReorganizeString {
+public class NoSameAdjecentString {
  /*
     Leetcode 767 Reorganize String:
     Given a string s, rearrange the characters of s so that any two adjacent characters are not the same.

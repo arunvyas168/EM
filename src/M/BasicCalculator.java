@@ -38,7 +38,9 @@ ASK --- any other spl char
 
 public class BasicCalculator {
     public static int calculate(String s) {
-        s = s.replaceAll("\\s","");
+        /*
+        s = s.replaceAll("\\s","");   // use this only if we have spaces in input
+        */
         Stack<Integer> stack = new Stack<>();
         int currentNumber = 0;
         char currentOperator = '+';

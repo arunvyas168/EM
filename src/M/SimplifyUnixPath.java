@@ -2,6 +2,8 @@ package M;
 
 
 import java.util.Stack;
+import java.util.Arrays;
+
 
 /*
     SOLUTION:
@@ -47,3 +49,4 @@ public class SimplifyUnixPath {
         System.out.println(simplifyPath(input));
     }
 }
+
