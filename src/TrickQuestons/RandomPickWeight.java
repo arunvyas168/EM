@@ -24,13 +24,11 @@ public class RandomPickWeight {
 
     public RandomPickWeight(int[] w) {
         this.prefixSumArray = new int[w.length];
-
-        int cumulativeSum = 0;
+        totalSum = 0;
         for (int i = 0; i < w.length; ++i) {
-            cumulativeSum += w[i];
-            this.prefixSumArray[i] = cumulativeSum;
+            totalSum += w[i];
+            this.prefixSumArray[i] = totalSum;
         }
-        this.totalSum = cumulativeSum;
     }
 
     public int pickIndex() {
