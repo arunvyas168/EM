@@ -37,6 +37,8 @@ check if there are any intersection
 
 
     TLDR:
+        Note: Treat it as 2 linked list intersection
+
         Both node will catch each other's tail
         and eventually meet at the intersection
 
