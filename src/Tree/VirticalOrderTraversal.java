@@ -57,6 +57,11 @@ public class VirticalOrderTraversal {
 
     /*
         Solution-2 DFS solution with Treemap for sorting (sort column and column)
+
+        TLDR:
+            TreeMap key == column in sorted way
+            TreeMap value == List of nodes in that virtical
+            Value list has to be sorted. So for list sort use Pair class
     */
 
     public static class Pair implements Comparable<Pair>{
@@ -66,21 +71,12 @@ public class VirticalOrderTraversal {
             this.value = value;
             this. row = row;
         }
-
         @Override
         public int compareTo(Pair pair){
+
             return Integer.compare(this.row, pair.row);
         }
 
-    }
-
-    public ArrayList<Integer> getColumnSortedList(ArrayList<Pair> value){
-        ArrayList<Integer> list = new ArrayList<>();
-        Collections.sort(value);
-        for(Pair item: value){
-            list.add(item.value);
-        }
-        return list;
     }
 
     public List<List<Integer>> verticalOrder2(TreeNode root) {
@@ -90,12 +86,14 @@ public class VirticalOrderTraversal {
         int row = 0;
         verticalOrder2_util(root, row, column, map);
         for(Map.Entry<Integer, ArrayList<Pair>> entry: map.entrySet()){
+            // lets get sorted value instead of sorted pair
             ArrayList<Integer> list = getColumnSortedList(entry.getValue());
             result.add(list);
         }
         return result;
     }
 
+    // Helper function to create Pair object and add to Tree map
     public void verticalOrder2_util(TreeNode root, int column, int row, TreeMap<Integer, ArrayList<Pair>> map){
         if(root == null){
             return;
@@ -111,6 +109,16 @@ public class VirticalOrderTraversal {
         map.put(column, list);
         verticalOrder2_util(root.left, column-1, row+1, map);
         verticalOrder2_util(root.right, column+1, row+1, map);
+    }
+
+    // This function is to sort and also convert pair list to value list
+    public ArrayList<Integer> getColumnSortedList(ArrayList<Pair> value){
+        ArrayList<Integer> list = new ArrayList<>();
+        Collections.sort(value);
+        for(Pair item: value){
+            list.add(item.value);
+        }
+        return list;
     }
 
 }
