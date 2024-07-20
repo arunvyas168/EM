@@ -10,10 +10,8 @@ SOLUTION:
     TLDR: Do Level Order and take the right most of that level
 
     1. Since its level order -- use a Queue
-    2. Since each level needs to be checked use while inside the while
-    3. How to find rightMost in the Queue:
-        Have a varable and keep setting it as you pop each level
-        The last pop will be the right most
+    2. Have a variable rightMostValue
+    3. when loop finishes its the right most value
 
 */
 
