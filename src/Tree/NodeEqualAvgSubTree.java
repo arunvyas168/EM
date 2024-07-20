@@ -21,14 +21,14 @@ For the node with value 6: The average of its subtree is 6 / 1 = 6.
 /*
     TLDR:
         Trick
-            1. is we need to do POSTORDER
-            2. Return 2 things -- cumilative sum and total subtree count
-            3. We need rdepth+ldepth+1 for count and also store cumilative sum
-
+            1. POSTORDER Traversal
+            2. Keep track of depth and cumulative sum Pair(Depth, cumilativeSum)
+            3. Util Return Pair object
 */
 
 public class NodeEqualAvgSubTree {
-    int count;
+
+    // Define The pair --> Easy to keep track of depth and cumilativeSum
     public static class Pair{
         public int depth;
         public int cumilativeSum;
@@ -37,22 +37,37 @@ public class NodeEqualAvgSubTree {
             this.cumilativeSum = cumilativeSum;
         }
     }
+
+    /*------------function------------------*/
+    // Global count will be modified by util
+    int count;
     public int averageOfSubtree(TreeNode root) {
         count = 0;
         averageOfSubtreeUtil(root);
         return count;
     }
+
+    /*--------UTIL------*/
+    // return Pair
     public Pair averageOfSubtreeUtil(TreeNode root){
+        // if null return Pair with 0,0 --> sum is 0 and depth is 0
         if(root==null){
             return new Pair(0, 0);
         }
+
+        // Post order --> get Pair object with sum and depth
         Pair lPair = averageOfSubtreeUtil(root.left);
         Pair rPair =  averageOfSubtreeUtil(root.right);
+
+        // Calculate depth, sum and average
         int depth = lPair.depth+rPair.depth+1;
         int cumilativeSum = lPair.cumilativeSum + rPair.cumilativeSum +root.value;
+
+        // if cumilativeSum/depth = root.value --> increment counter
         if((cumilativeSum/depth) == root.value){
             count++;
         }
+        // finally return Pair with value----> post order so return this finally
         return new Pair(depth, cumilativeSum);
     }
 }
