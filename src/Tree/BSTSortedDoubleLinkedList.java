@@ -23,6 +23,19 @@ public class BSTSortedDoubleLinkedList {
     // The Last node (largest--right most)
     TreeNode last = null;
 
+    public TreeNode treeToDoublyList(TreeNode root) {
+        if (root == null){
+            return null;
+        }
+        // inorder traversal
+        helper(root);
+
+        // Closing the Circle of double linked list
+        last.right = first;
+        first.left = last;
+        return first;
+    }
+
     public void helper(TreeNode node) {
         // Already checked for null so check for not null
         if (node != null) {
@@ -46,18 +59,5 @@ public class BSTSortedDoubleLinkedList {
             // go to right
             helper(node.right);
         }
-    }
-
-    public TreeNode treeToDoublyList(TreeNode root) {
-        if (root == null){
-            return null;
-        }
-        // inorder traversal
-        helper(root);
-
-        // Closing the Circle of double linked list
-        last.right = first;
-        first.left = last;
-        return first;
     }
 }
