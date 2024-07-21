@@ -1,4 +1,4 @@
-package TrickQuestons;
+package Matrix;
 
 import java.util.HashSet;
 import java.util.LinkedList;
