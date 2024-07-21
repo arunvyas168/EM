@@ -38,14 +38,17 @@ public class NodeEqualAvgSubTree {
         }
     }
 
-    /*------------function------------------*/
-    // Global count will be modified by util
-    int count;
+
+    int count;          // Global count will be modified by util
+
+    /*------------main function------------------*/
     public int averageOfSubtree(TreeNode root) {
         count = 0;
         averageOfSubtreeUtil(root);
         return count;
     }
+
+
 
     /*--------UTIL------*/
     // return Pair
