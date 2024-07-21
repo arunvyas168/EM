@@ -21,38 +21,37 @@ public class NestListSum {
         public Integer getInteger();
     }
 
-/*
-IN the helper:
 
-I am looping over the list
-If I see integer I construct the product and add to list
-If I see list I pass to helper with level+1
-*/
-    public void depthSumUtil(List<NestedInteger> nestedList, int level, ArrayList<Integer> list){
-        for(NestedInteger ni: nestedList){
-            if(ni.isInteger()){
-                int product = ni.getInteger()*level;
-                list.add(product);
-            }else{
-                depthSumUtil(ni.getList(), level+1, list);
-            }
+    /*
+        I am using DFS here. I have a start level of 1
+        I am passing it to helper along with result array
+    */
+    public int depthSum(List<NestedInteger> nestedList) {
+        ArrayList<Integer> list = new ArrayList<>();
+        int depth = 1;
+        depthSumUtil(nestedList, depth, list);
+        int sum = 0;
+        for(int num: list){
+            sum = sum+num;
         }
+        return sum;
     }
 
 
-
-/*
-I am using DFS here. I have a start level of 1
-I am passing it to helper along with result array
-*/
-    public int depthSum(List<NestedInteger> nestedList) {
-        ArrayList<Integer> list = new ArrayList<>();
-        int sum = 0;
-        int level = 1;
-        depthSumUtil(nestedList, level, list);
-        for(Integer i: list){
-            sum += i;
+    /*
+    IN the helper:
+        I am looping over the list
+        If I see integer I construct the product and add to list
+        If I see list I pass to helper with level+1
+    */
+    public void depthSumUtil(List<NestedInteger> nestedList, int depth, ArrayList<Integer> list){
+        for(NestedInteger object: nestedList){
+            if(object.isInteger()){
+                int value = object.getInteger() * depth;
+                list.add(value);
+            }else{
+                depthSumUtil(object.getList(), depth+1, list);
+            }
         }
-        return sum;
     }
 }
