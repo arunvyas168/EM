@@ -16,11 +16,8 @@ v1.dotProduct(v2) = 1*0 + 0*3 + 0*0 + 2*4 + 3*0 = 8
 /*
     SOLUTION:
         TLDR: Since is VECTOR is sparse -- So store only index which has value
-            Store in an array [index][value] and add to list
-        Now traverse and compute dot product
-
-        1. Constructor will create the Array List with [index][value]
-        2. dot product will traverse both arraylist and compute product
+            1. Store HashMap<index, value>
+            2. use map to calculate sum
 */
 
 import java.util.ArrayList;
