@@ -1,4 +1,4 @@
-package M;
+package Matrix;
 
 /*
     Check --- matrix[r-1][c-1] != matrix[r][c]
