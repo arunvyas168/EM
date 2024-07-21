@@ -11,33 +11,26 @@ package Stock;
 
 /*
     SOLUTION:
-        TLDR: If profit take max of profit
-              if price goes down than now, just move your buy price
-
-        1. Have a holdPrice
-        2. have a futurePrice
-        3. If future is small make that your hold price
-        4. Otherwise calculate profit and keep track of max profit
+        TLDR:
+            1. Have minPrice to a Integer.MAX_VALUE value
+            2. Max profit by default = 0
+            3. if you find smaller price reSet minPrice
+            4. If you find larger profit reset maxProfit
+            return profit
 */
 
 
 
 public class maxProfit {
-    public int maxProfits(int[] prices) {
-        if(prices.length<=1){
-            return 0;
-        }
-        int holdPrice = 0;
-        int future = 1;
+    public int getMaxProfit(int[] prices){
+        int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
-
-        while(future<prices.length){
-            if(prices[future]<prices[holdPrice]){
-                holdPrice = future;
-                future++;
+        for(int i=0; i<prices.length;i++){
+            if(prices[i]<minPrice){
+                minPrice = prices[i];
             }else{
-                maxProfit = Math.max(maxProfit, (prices[future]-prices[holdPrice]));
-                future++;
+                int currentProfit = prices[i]-minPrice;
+                maxProfit = Math.max(maxProfit, currentProfit);
             }
         }
         return maxProfit;
