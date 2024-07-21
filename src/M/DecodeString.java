@@ -1,4 +1,4 @@
-package TrickQuestons;
+package M;
 
 /*
 Decode String
