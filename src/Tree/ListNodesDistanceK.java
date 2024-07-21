@@ -25,7 +25,7 @@ You can return the answer in any order.
 
 
 
-public class LIstNodesDistanceK {
+public class ListNodesDistanceK {
     // Ask if values are unique
     HashMap<Integer, ArrayList<Integer>> graph;
     HashSet<Integer> visited;
