@@ -1,6 +1,7 @@
 package BinarySearch;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -20,6 +21,23 @@ import java.util.List;
 */
 
 public class KClosestSorted {
+
+    /*
+    Easy and clean
+    public List<Integer> findClosestElementsSort(int[] array, int k, int x) {
+        List<Integer> result = new ArrayList<>();
+        for(int num : array){
+            result.add(num);
+        }
+        Collections.sort(result, (a,b)->Math.abs(a-x)-Math.abs(b-x));
+        result = result.subList(0,k);
+
+        // optional -- not needed
+        Collections.sort(result);
+
+        return result;
+    }
+*/
 
     public static List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> result = new ArrayList<Integer>();
