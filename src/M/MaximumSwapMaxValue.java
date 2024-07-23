@@ -25,7 +25,7 @@ Explanation: No swap.
             1. For a given index we need a way to know if there is a bigger number in front
             2. So start reverse and start storing that for each index
 */
-public class MaximumSwap {
+public class MaximumSwapMaxValue {
     // This Info needs to be saved for each index
     static class SwapElement{
         int maxSeen;
