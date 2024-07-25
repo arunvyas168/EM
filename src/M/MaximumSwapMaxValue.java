@@ -71,8 +71,8 @@ public class MaximumSwapMaxValue {
         //now construct integer back
 
         int result = 0;
-        for(int e:input){
-            result = (result*10)+e;
+        for(int n:input){
+            result = (result*10)+n;
         }
         return result;
     }
