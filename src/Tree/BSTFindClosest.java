@@ -2,6 +2,12 @@ package Tree;
 
 import java.util.Stack;
 
+/*
+    We will do Stack -- in order -- iterative
+    We will stop if we find the element itself
+    Otherwise we need one small and one bigger and compare
+*/
+
 public class BSTFindClosest {
     public int BSTCLosestValue(TreeNode root, int key){
 
