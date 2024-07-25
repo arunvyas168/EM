@@ -29,31 +29,8 @@ public class LRUCache {
     HashMap<Integer, Node> map = new HashMap<>();
 
     public LRUCache(int capacity) {
+
         this.capacity = capacity;
-    }
-
-    public void remove(Node n){
-        if(n.prev != null){
-            n.prev.next = n.next;
-        }else {
-            head = n.next;
-        }
-        if (n.next != null){
-            n.next.prev = n.prev;
-        }else {
-            end = n.prev;
-        }
-    }
-
-    public void setHead(Node n){
-        n.next = head;
-        if(head!=null){
-            head.prev = n;
-        }
-        head = n;
-        if(end==null){
-            end = head;
-        }
     }
 
     public int get(int key) {
@@ -83,6 +60,31 @@ public class LRUCache {
                 setHead(created);
             }
             map.put(key,created);
+        }
+    }
+
+    // Helper functions
+    public void remove(Node n){
+        if(n.prev != null){
+            n.prev.next = n.next;
+        }else {
+            head = n.next;
+        }
+        if (n.next != null){
+            n.next.prev = n.prev;
+        }else {
+            end = n.prev;
+        }
+    }
+
+    public void setHead(Node n){
+        n.next = head;
+        if(head!=null){
+            head.prev = n;
+        }
+        head = n;
+        if(end==null){
+            end = head;
         }
     }
 }
