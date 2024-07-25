@@ -14,7 +14,7 @@ import java.util.HashMap;
             2. 1st pass:-->  copy node and save in hash map. HashMap<oldNode, newNode>
             3. 2nd pass:--> read map and point --> note to default to null
 */
-public class DeepCopyListRandomPointer {
+public class CloneDeepCopyListRandomPointer {
     public static class Node {
         int val;
         Node next;
