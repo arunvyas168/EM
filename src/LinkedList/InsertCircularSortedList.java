@@ -19,17 +19,22 @@ public class Node {
 
 public class InsertCircularSortedList {
     public Node insert(Node head, int key) {
+        // Case-1:  check for null
         if (head == null) {
             Node newNode = new Node(key, null);
             newNode.next = newNode;     // circular list
             return newNode;
         }
 
+        // we need 2 pointers in circular linked list
         Node prev = head;
         Node curr = head.next;
 
+        // do while
         do {
-            if (prev.value <= key && key <= curr.value) {       // Case where we are able to find if node can go in between --> && is imp
+            // Case-2:  check for if key belong in the middle
+            if (prev.value <= key && key <= curr.value) {
+                // Node object has link to next
                 prev.next = new Node(key, curr);
                 break;
             } else if (prev.value > curr.value) {               // Case where we reached end/start of that circular linkedlist
