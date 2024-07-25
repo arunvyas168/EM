@@ -31,11 +31,11 @@ public class InsertCircularSortedList {
         do {
             if (prev.value <= key && key <= curr.value) {       // Case where we are able to find if node can go in between --> && is imp
                 prev.next = new Node(key, curr);
-                return head;
+                break;
             } else if (prev.value > curr.value) {               // Case where we reached end/start of that circular linkedlist
                 if (key >= prev.value || key <= curr.value) { // we have to check if this new value can become a last or fist node
                     prev.next = new Node(key, curr);
-                    return head;
+                    break;
                 }
             }
 
