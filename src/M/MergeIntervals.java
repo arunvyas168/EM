@@ -32,9 +32,10 @@ public class MergeIntervals {
         Arrays.sort(intervals, (a, b)->a[0]-b[0]);       //nlogn
         LinkedList<int[]> result = new LinkedList<>();
         for(int[] interval: intervals){
-            if((result.isEmpty()) || (result.getLast()[1]<interval[1])){
+            if((result.isEmpty()) || (result.getLast()[1]<interval[1])){    // if its 1st element or no overlap
                 result.add(interval);
             }else{
+                // there is overlap update end time or previous element
                 result.getLast()[1] = Math.max(result.getLast()[1],interval[1]);
             }
         }
