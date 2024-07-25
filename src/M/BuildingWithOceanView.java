@@ -35,15 +35,18 @@ Explanation: Only building 3 has an ocean view.
 import java.util.ArrayList;
 
 public class BuildingWithOceanView {
+    // can return ArrayList<Integer>
     public static int[] findBuildings(int[] heights) {
         int max = 0;
         ArrayList<Integer> list = new ArrayList<>();
         for(int i=heights.length-1; i>=0; i--){
             if(heights[i]>max){
-                list.add(0,i);
+                list.add(i);
             }
             max = Math.max(max,heights[i]);
         }
+
+        // optional incase we return int[]
         int[] result = new int[list.size()];
         for(int i=0; i<list.size(); i++){
             result[i] = list.get(i);
