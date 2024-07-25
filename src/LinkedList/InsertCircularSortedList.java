@@ -27,19 +27,16 @@ public class InsertCircularSortedList {
 
         Node prev = head;
         Node curr = head.next;
-        boolean toInsert = false;
 
         do {
             if (prev.value <= key && key <= curr.value) {       // Case where we are able to find if node can go in between --> && is imp
-                toInsert = true;
-            } else if (prev.value > curr.value) {               // Case where we reached end/start of that circular linkedlist
-                if (key >= prev.value || key <= curr.value)     // we have to check if this new value can become a last or fist node
-                    toInsert = true;
-            }
-
-            if (toInsert) {
                 prev.next = new Node(key, curr);
                 return head;
+            } else if (prev.value > curr.value) {               // Case where we reached end/start of that circular linkedlist
+                if (key >= prev.value || key <= curr.value) { // we have to check if this new value can become a last or fist node
+                    prev.next = new Node(key, curr);
+                    return head;
+                }
             }
 
             prev = curr;                                    // if above cases are not solved we keep moving
