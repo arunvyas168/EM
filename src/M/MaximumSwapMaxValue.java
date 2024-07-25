@@ -50,6 +50,7 @@ public class MaximumSwapMaxValue {
         HashMap<Integer, SwapElement> map = new HashMap<>();
         int maxSeen = Integer.MIN_VALUE;
         int maxSeenAt = -1;
+        // go reverse
         for(int i=input.size()-1; i>=0; i--){
             map.put(i,new SwapElement(maxSeen, maxSeenAt));
             if(input.get(i)>maxSeen){
