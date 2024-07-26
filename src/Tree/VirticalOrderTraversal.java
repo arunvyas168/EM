@@ -80,13 +80,14 @@ public class VirticalOrderTraversal {
     }
 
     public List<List<Integer>> verticalOrder2(TreeNode root) {
+        //note its list of list as output
         List<List<Integer>> result = new ArrayList<>();
         TreeMap<Integer, ArrayList<Pair>> map = new TreeMap<>();
         int column = 0;
         int row = 0;
         verticalOrder2_util(root, row, column, map);
         for(Map.Entry<Integer, ArrayList<Pair>> entry: map.entrySet()){
-            // lets get sorted value instead of sorted pair
+            // lets get sorted node value instead of sorted pair
             ArrayList<Integer> list = getColumnSortedList(entry.getValue());
             result.add(list);
         }
@@ -98,6 +99,8 @@ public class VirticalOrderTraversal {
         if(root == null){
             return;
         }
+
+        // get List of Pairs for a column
         ArrayList<Pair> list = null;
         if(map.containsKey(column)){
             list = map.get(column);
@@ -105,8 +108,12 @@ public class VirticalOrderTraversal {
             list = new ArrayList<>();
 
         }
+
+        // add to the list new pair object with current row and value
         list.add(new Pair(row, root.value));
         map.put(column, list);
+
+        // recursively do that for row+1 and both side of column
         verticalOrder2_util(root.left, column-1, row+1, map);
         verticalOrder2_util(root.right, column+1, row+1, map);
     }
