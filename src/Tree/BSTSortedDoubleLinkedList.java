@@ -11,7 +11,7 @@ You should return the pointer to the smallest element of the linked list.
 
 /*
     TLDR:
-        1. Sorted --> in-order traversal
+        1. Sorted --> in-order traversal -- recursion
         2. Keep First and Last Pointer
         3. Close loop of circular Linked list
 */
