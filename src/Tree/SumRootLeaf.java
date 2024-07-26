@@ -17,6 +17,14 @@ package Tree;
 
 
 public class SumRootLeaf {
+
+    // Main Fnction
+    public int sumNumbers(TreeNode root) {
+        // most imp to understand to send 0 (10*0 = 0)
+        return dfs(root, 0);
+    }
+
+    // Helper function
     public int dfs(TreeNode root, int num){
         if(root==null){
             return 0;
@@ -32,10 +40,5 @@ public class SumRootLeaf {
 
         // Add left and right subtree to get sum
         return dfs(root.left, num) + dfs(root.right, num);
-    }
-
-    public int sumNumbers(TreeNode root) {
-        // most imp to understand to send 0 (10*0 = 0)
-        return dfs(root, 0);
     }
 }
