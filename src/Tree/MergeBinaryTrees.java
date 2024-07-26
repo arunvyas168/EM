@@ -10,7 +10,7 @@ Note: The merging process must start from the root nodes of both trees.
 
 /*
         TLDR:
-            1. Do postorder
+            1. Do pre-order
             2. Return type has to be TreeNode
             3. Traverse at same time and overwrite t1
 */
